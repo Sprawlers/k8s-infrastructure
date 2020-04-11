@@ -18,6 +18,9 @@ spec:
       containers:
       - name: icy
         image: sprawlers/icy:v1.0
+        envFrom:
+        - configMapRef:
+            name: icy-configmap
         ports:
         - containerPort: 4000
         livenessProbe:

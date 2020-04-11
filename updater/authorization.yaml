@@ -1,26 +1,26 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: auto-deploy
+  name: updater
   namespace: cicd
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: auto-deploy-role-binding
+  name: updater-role-binding
 subjects:
 - kind: ServiceAccount
-  name: auto-deploy
+  name: updater
   namespace: cicd
 roleRef:
   kind: ClusterRole
-  name: auto-deploy-role
+  name: updater-role
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: auto-deploy-role
+  name: updater-role
 rules:
 - apiGroups: [""]
   resources: ["pods","services"]
